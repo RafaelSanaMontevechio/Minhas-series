@@ -1,0 +1,33 @@
+<%- include('../partials/header') %>
+
+<section id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2>Séries</h2>
+                <p class="lead">Séries cadastradas <a href="/series/nova" class="btn btn-info">Nova série</a> </p>
+                <table class="table table-hover">
+
+                    <% series.forEach( serie => { %>
+                    <tr>
+                        <td>
+                            <a href="/series/info/<%= serie._id %>"> <%= serie.name %> </a>
+                        </td>
+                        <td>
+                            <span class="badge badge-secondary">
+                                <%= labels.filter(label => label.id === serie.status )[0].name %>
+                            </span>
+                        </td>
+                        <td>
+                            <a href="/series/editar/<%= serie._id %>">Editar</a>
+                            <a href="/series/excluir/<%= serie._id %>">Excluir</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include('../partials/footer') %>
